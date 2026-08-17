@@ -15,6 +15,6 @@
   "author": "Imam Biladi",
   "license": "MIT",
   "devDependencies": {
-    "vercel": "^32.0.0"
+    "vercel": "^32.7.2"
   }
 }
