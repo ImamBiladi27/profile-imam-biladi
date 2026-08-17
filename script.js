@@ -109,12 +109,32 @@ if (contactForm) {
         emailjs.sendForm(serviceID, templateID, this)
             .then(() => {
                 submitBtn.textContent = 'Send Message';
-                alert('Thank you for your message! I will get back to you soon.');
+                
+                // Success Alert with SweetAlert2
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Message Sent!',
+                    text: 'Thank you for your message! I will get back to you soon.',
+                    confirmButtonColor: '#007bff',
+                    backdrop: true,
+                    allowOutsideClick: false,
+                    allowEscapeKey: false
+                });
+                
                 contactForm.reset();
             }, (err) => {
                 submitBtn.textContent = 'Send Message';
                 console.error('Email failed:', err);
-                alert('Failed to send message. Please try again or contact me at imambiladi27@gmail.com');
+                
+                // Error Alert with SweetAlert2
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Failed to send message. Please try again or contact me at imambiladi27@gmail.com',
+                    confirmButtonColor: '#dc3545',
+                    backdrop: true,
+                    allowOutsideClick: false
+                });
             });
     });
 }
