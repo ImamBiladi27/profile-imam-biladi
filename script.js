@@ -93,20 +93,69 @@ progressBars.forEach(bar => {
 // Form submission handling
 const contactForm = document.querySelector('.contact-form');
 
+// Initialize EmailJS with error handling
+if (typeof emailjs === 'undefined') {
+    console.error('EmailJS SDK not loaded. Please check if the script tag is included in index.html');
+} else {
+    // You can set your public key here for testing, but it should be in index.html
+    // emailjs.init("YOUR_PUBLIC_KEY_HERE");
+}
+
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Here you would typically send the data to a server
-        // For demo purposes, we'll show a success message
-        alert('Thank you for your message! I will get back to you soon.');
-        
-        // Reset form
-        contactForm.reset();
+
+        const submitBtn = document.getElementById('submit-btn');
+        const originalText = submitBtn.textContent;
+
+        // Validation
+        if (!emailjs || !emailjs.send) {
+            alert('Failed to send message. Email service is not configured. Please try again later.');
+            return;
+        }
+
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        try {
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            // Parameters to send to EmailJS
+            const templateParams = {
+                to_name: 'Imam Biladi',
+                from_name: formData.name,
+                from_email: formData.email,
+                subject: formData.subject,
+                message: formData.message,
+                reply_to: formData.email
+            };
+
+            // IMPORTANT: Replace these with your actual EmailJS credentials
+            const SERVICE_ID = 'service_p5pojth';      // Example: service_gmail123
+            const TEMPLATE_ID = 'template_v6xibmr';    // Example: template_contact456
+
+            // Send email using EmailJS
+            await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
+
+            // Show success message
+            alert('Thank you for your message! I will get back to you soon.');
+
+            // Reset form
+            contactForm.reset();
+
+        } catch (error) {
+            console.error('Email sending failed:', error);
+            alert('Failed to send message. Please check your EmailJS configuration or contact me directly at imambiladi27@gmail.com');
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
     });
 }
 
@@ -119,7 +168,7 @@ const heroSubtitle = document.querySelector('.hero-text h2');
 
 function typeEffect() {
     const currentTitle = heroTitles[titleIndex];
-    
+
     if (isDeleting) {
         heroSubtitle.textContent = currentTitle.substring(0, charIndex - 1);
         charIndex--;
@@ -127,9 +176,9 @@ function typeEffect() {
         heroSubtitle.textContent = currentTitle.substring(0, charIndex + 1);
         charIndex++;
     }
-    
+
     let typingSpeed = isDeleting ? 50 : 100;
-    
+
     if (!isDeleting && charIndex === currentTitle.length) {
         typingSpeed = 2000; // Pause at end
         isDeleting = true;
@@ -138,7 +187,7 @@ function typeEffect() {
         titleIndex = (titleIndex + 1) % heroTitles.length;
         typingSpeed = 500; // Pause before new word
     }
-    
+
     setTimeout(typeEffect, typingSpeed);
 }
 
@@ -150,10 +199,13 @@ window.addEventListener('scroll', () => {
     const heroImage = document.querySelector('.hero-image');
     const scrolled = window.pageYOffset;
     const rate = scrolled * 0.3;
-    
+
     if (heroImage) {
         heroImage.style.transform = `translateY(${rate}px)`;
     }
 });
 
 console.log('Imam Biladi Profile Page Loaded Successfully!');
+
+// Dynamic Copyright Year
+document.getElementById('current-year').textContent = new Date().getFullYear();

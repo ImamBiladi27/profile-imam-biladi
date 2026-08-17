@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imam Biladi - Software Developer</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -47,7 +50,8 @@
                 </div>
                 <div class="hero-image">
                     <div class="image-container">
-                        <img src="https://ui-avatars.com/api/?name=Imam+Biladi&size=400&background=6366f1&color=fff&bold=true" alt="Imam Biladi">
+                        <img src="https://ui-avatars.com/api/?name=Imam+Biladi&size=400&background=6366f1&color=fff&bold=true"
+                            alt="Imam Biladi">
                     </div>
                 </div>
             </div>
@@ -60,8 +64,12 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>I'm a passionate software developer dedicated to creating elegant and efficient solutions. With a strong foundation in programming and a love for problem-solving, I thrive on turning complex challenges into simple, beautiful designs.</p>
-                    <p>My journey in software development has allowed me to work on diverse projects, from web applications to mobile apps. I constantly stay updated with the latest technologies and best practices to deliver high-quality code.</p>
+                    <p>I'm a passionate software developer dedicated to creating elegant and efficient solutions. With a
+                        strong foundation in programming and a love for problem-solving, I thrive on turning complex
+                        challenges into simple, beautiful designs.</p>
+                    <p>My journey in software development has allowed me to work on diverse projects, from web
+                        applications to mobile apps. I constantly stay updated with the latest technologies and best
+                        practices to deliver high-quality code.</p>
                     <div class="about-info">
                         <div class="info-item">
                             <span>Name:</span> Imam Biladi
@@ -100,9 +108,9 @@
                 <div class="skill-card">
                     <i class="fab fa-react"></i>
                     <h3>React</h3>
-                    <component class="progress-bar">
+                    <!-- <component class="progress-bar">
                         <div class="progress" style="width: 85%"></div>
-                    </component>
+                    </component> -->
                 </div>
                 <div class="skill-card">
                     <i class="fab fa-node"></i>
@@ -139,29 +147,40 @@
             <h2 class="section-title">Experience</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">2023 - Present</div>
+                    <div class="timeline-date">2025 - now</div>
                     <div class="timeline-content">
-                        <h3>Senior Software Developer</h3>
-                        <p className="company">Tech Company Inc.</p>
-                        <p>Leading development of scalable web applications, mentoring junior developers, and implementing best practices across the team.</p>
+                        <h3>Fullstack Web Developer</h3>
+                        <p className="company">PT. Borwita Indah</p>
+                        <p>* Integrated marketplace chat webhooks into the company's chatbot system, enabling real-time
+                            communication between marketplaces and internal services.
+                            * Developed and maintained chatbot automation to automatically respond to customer inquiries
+                            on marketplace platforms, reducing response delays and improving customer service
+                            efficiency.
+                            * Maintained and enhanced the company's Asset Management System, including bug fixes,
+                            feature improvements, and system optimization.
+                            * Processed and transformed live streaming data from marketplace platforms into interactive
+                            dashboards, providing real-time insights for business monitoring and performance analysis.
+                        </p>
                     </div>
                 </div>
+
+            </div>
+            <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">2021 - 2023</div>
+                    <div class="timeline-date">2024 - 2025</div>
                     <div class="timeline-content">
-                        <h3>Software Developer</h3>
-                        <p className="company">Digital Solutions Ltd.</p>
-                        <p>Developed and maintained multiple client projects, collaborated with cross-functional teams, and delivered high-quality solutions.</p>
+                        <h3>Fullstack Web Developer</h3>
+                        <p className="company">PT. Maxipro Indonesia Group Indonesia</p>
+                        <p>- development feature website company <br>
+                            - development rest server api with rest codeigniter 3 to consume and integration another
+                            website using laravel 10, bootstrap 4 and jquery
+                            - testing rest server api using postman
+                            - maintance server and web company
+                            - consume rest api wordpress
+                        </p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2019 - 2021</div>
-                    <div class="timeline-content">
-                        <h3>Junior Developer</h3>
-                        <p className="company">StartUp Innovations</p>
-                        <p>Started my professional journey working on frontend development, learning modern frameworks, and contributing to product features.</p>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -183,23 +202,23 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h3>Email</h3>
-                            <p>imam@example.com</p>
+                            <p>imambiladi27@gmail.com</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
                         <div>
                             <h3>Phone</h3>
-                            <p>+62 XXXXXXXXXX</p>
+                            <p>+62 83857120078</p>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="text" placeholder="Subject" required>
-                    <textarea rows="5" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                <form class="contact-form" id="contact-form">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    <textarea id="message" rows="5" name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
                 </form>
             </div>
         </div>
@@ -208,7 +227,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Imam Biladi. All rights reserved.</p>
+            <p>&copy; <span id="current-year"></span> Imam Biladi. All rights reserved.</p>
             <div class="social-icons footer-social">
                 <a href="#" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -218,5 +237,11 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        emailjs.init("rvdm_p2mQMnaNYzQG");
+    </script>
 </body>
+
 </html>
