@@ -2,13 +2,33 @@
   "version": 2,
   "builds": [
     {
-      "src": "*.html",
+      "src": "package.json",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(\\..*)",
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)\\.html",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*\\.js)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*\\.css)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*\\.(png|jpg|jpeg|gif|svg|ico|webp))",
       "dest": "/$1"
     }
   ]
