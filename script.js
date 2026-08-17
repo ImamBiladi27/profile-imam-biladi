@@ -90,72 +90,32 @@ progressBars.forEach(bar => {
     progressObserver.observe(bar);
 });
 
-// Form submission handling
+// Form submission handling using simplified sendForm method
 const contactForm = document.querySelector('.contact-form');
 
-// Initialize EmailJS with error handling
-if (typeof emailjs === 'undefined') {
-    console.error('EmailJS SDK not loaded. Please check if the script tag is included in index.html');
-} else {
-    // You can set your public key here for testing, but it should be in index.html
-    // emailjs.init("YOUR_PUBLIC_KEY_HERE");
-}
-
 if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const submitBtn = document.getElementById('submit-btn');
-        const originalText = submitBtn.textContent;
-
-        // Validation
-        if (!emailjs || !emailjs.send) {
-            alert('Failed to send message. Email service is not configured. Please try again later.');
-            return;
-        }
-
+    const submitBtn = document.getElementById('submit-btn');
+    
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
-
-        try {
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-
-            // Parameters to send to EmailJS
-            const templateParams = {
-                to_name: 'Imam Biladi',
-                from_name: formData.name,
-                from_email: formData.email,
-                subject: formData.subject,
-                message: formData.message,
-                reply_to: formData.email
-            };
-
-            // IMPORTANT: Replace these with your actual EmailJS credentials
-            const SERVICE_ID = 'service_p5pojth';      // Example: service_gmail123
-            const TEMPLATE_ID = 'template_v6xibmr';    // Example: template_contact456
-
-            // Send email using EmailJS
-            await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
-
-            // Show success message
-            alert('Thank you for your message! I will get back to you soon.');
-
-            // Reset form
-            contactForm.reset();
-
-        } catch (error) {
-            console.error('Email sending failed:', error);
-            alert('Failed to send message. Please check your EmailJS configuration or contact me directly at imambiladi27@gmail.com');
-        } finally {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }
+        
+        // Replace with your actual EmailJS credentials
+        const serviceID = 'service_p5pojth';      // ← Update Service ID (contoh: service_gmail123)
+        const templateID = 'template_p5xgbxk';    // ← Update Template ID (misal: template_auto_reply)
+        
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                submitBtn.textContent = 'Send Message';
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            }, (err) => {
+                submitBtn.textContent = 'Send Message';
+                console.error('Email failed:', err);
+                alert('Failed to send message. Please try again or contact me at imambiladi27@gmail.com');
+            });
     });
 }
 
