@@ -1,0 +1,20 @@
+{
+  "name": "imam-biladi-profile",
+  "version": "1.0.0",
+  "description": "Personal profile website for Imam Biladi - Software Developer",
+  "scripts": {
+    "deploy": "vercel deploy",
+    "dev": "npx serve ."
+  },
+  "keywords": [
+    "profile",
+    "portfolio",
+    "developer",
+    "software-engineer"
+  ],
+  "author": "Imam Biladi",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  }
+}
